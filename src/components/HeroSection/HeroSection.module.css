@@ -1,0 +1,47 @@
+.hero {
+  position: fixed;
+  top: 64px; /* Висота хедера */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('../../images/car.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  padding-bottom: 60px;
+  padding-top: 372px;
+  overflow: auto;
+}
+
+.title {
+  color: white !important;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 16px;
+  margin-bottom: 24px;
+  max-width: 800px;
+  line-height: 1.2;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+  margin-top: 0;
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  max-width: 600px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.btn {
+  width: 200px;
+  height: 50px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}

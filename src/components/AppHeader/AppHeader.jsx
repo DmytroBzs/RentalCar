@@ -19,7 +19,9 @@ const AppHeader = () => {
         <Typography.Text className={css.car}>Car</Typography.Text>
       </Link>
       <div className={css.navLinks}>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className={NavLinkStyle}>
+          Home
+        </NavLink>
         <NavLink to="/catalog" className={NavLinkStyle}>
           Catalog
         </NavLink>

@@ -1,0 +1,16 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  row-gap: 48px;
+  padding: 0 0 80px;
+}
+
+.loading,
+.noResults {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #666;
+}

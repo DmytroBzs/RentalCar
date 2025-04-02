@@ -5,7 +5,7 @@ import css from './Loader.module.css';
 const Loader = () => {
   return (
     <div className={css.loader}>
-      <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />;
+      <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
     </div>
   );
 };

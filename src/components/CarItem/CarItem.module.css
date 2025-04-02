@@ -1,0 +1,112 @@
+.card {
+  width: 274px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.imageWrapper {
+  position: relative;
+  height: 268px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.heartIcon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.heartIcon svg {
+  font-size: 16px;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+}
+
+.content {
+  position: relative;
+}
+
+.header {
+  margin-bottom: 8px;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #121417;
+  width: 250px;
+}
+
+.price {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #121417;
+  white-space: nowrap;
+}
+
+.meta {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(18, 20, 23, 0.5);
+  margin-bottom: 8px;
+}
+
+.specs {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(18, 20, 23, 0.5);
+  margin-bottom: 16px;
+}
+
+.button {
+  width: 100%;
+  background-color: #3470ff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.43;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0b44cd !important;
+}
+.model {
+  color: #3470ff;
+}

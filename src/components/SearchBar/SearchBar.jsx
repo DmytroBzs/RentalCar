@@ -1,21 +1,82 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input, Select, Button, Row, Col } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined, DownOutlined } from '@ant-design/icons';
+import { selectBrands, selectIsLoading } from '../../redux/cars/selectors';
+import { fetchBrands } from '../../redux/cars/operations';
+import {
+  setBrandFilter,
+  setPriceFilter,
+  setMinMileageFilter,
+  setMaxMileageFilter,
+  setPage,
+} from '../../redux/filters/filtersSlice';
+import css from './SearchBar.module.css';
 
 const { Option } = Select;
 
-const SearchBar = () => {
-  const [form] = Form.useForm();
+const priceOptions = [30, 40, 50, 60, 70, 80];
 
-  const onFinish = values => {
-    console.log('Received values:', values);
+const dropdownIconStyle = {
+  transition: 'transform 0.3s',
+};
+
+const SearchBar = ({ onSearch }) => {
+  const [form] = Form.useForm();
+  const [openBrand, setOpenBrand] = useState(false);
+  const [openPrice, setOpenPrice] = useState(false);
+  const dispatch = useDispatch();
+
+  const brands = useSelector(selectBrands);
+  const isLoading = useSelector(selectIsLoading);
+  const filters = useSelector(state => state.filter.filters);
+
+  useEffect(() => {
+    if (brands.length === 0) {
+      dispatch(fetchBrands());
+    }
+  }, [brands.length, dispatch]);
+
+  useEffect(() => {
+    form.setFieldsValue({
+      brand: filters.brand,
+      price: filters.rentalPrice,
+      mileageFrom: filters.minMileage,
+      mileageTo: filters.maxMileage,
+    });
+  }, [filters, form]);
+
+  const handleSubmit = values => {
+    dispatch(setBrandFilter(values.brand || ''));
+    dispatch(setPriceFilter(values.price || ''));
+    dispatch(setMinMileageFilter(values.mileageFrom || ''));
+    dispatch(setMaxMileageFilter(values.mileageTo || ''));
+    dispatch(setPage(1));
+
+    if (onSearch) {
+      onSearch({
+        brand: values.brand,
+        price: values.price,
+        mileageFrom: values.mileageFrom,
+        mileageTo: values.mileageTo,
+      });
+    }
   };
 
+  const renderDropdownIcon = isOpen => (
+    <DownOutlined
+      style={{
+        ...dropdownIconStyle,
+        transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+      }}
+    />
+  );
+
   return (
-    <div className="search-bar-container">
+    <div className={css.searchContainer}>
       <Form
         form={form}
-        onFinish={onFinish}
+        onFinish={handleSubmit}
         layout="vertical"
         className="car-filter-form"
         style={{ width: '924px' }}
@@ -23,29 +84,41 @@ const SearchBar = () => {
         <Row gutter={16}>
           <Col xs={24} sm={12} md={6}>
             <Form.Item name="brand" label="Choose a brand">
-              <Select placeholder="Select brand">
-                <Option value="aston-martin">Aston Martin</Option>
-                <Option value="audi">Audi</Option>
-                <Option value="bmw">BMW</Option>
-                <Option value="bentley">Bentley</Option>
-                <Option value="buick">Buick</Option>
-                <Option value="chevrolet">Chevrolet</Option>
-                <Option value="chrysler">Chrysler</Option>
-                <Option value="gmc">GMC</Option>
-                <Option value="hummer">Hummer</Option>
+              <Select
+                placeholder="Select brand"
+                loading={isLoading}
+                onDropdownVisibleChange={setOpenBrand}
+                suffixIcon={renderDropdownIcon(openBrand)}
+                showSearch
+                optionFilterProp="children"
+                filterOption={(input, option) =>
+                  option.children.toLowerCase().indexOf(input.toLowerCase()) >=
+                  0
+                }
+                allowClear
+              >
+                {brands.map(brand => (
+                  <Option key={brand} value={brand}>
+                    {brand}
+                  </Option>
+                ))}
               </Select>
             </Form.Item>
           </Col>
 
           <Col xs={24} sm={12} md={6}>
             <Form.Item name="price" label="Price / 1 hour">
-              <Select placeholder="Select price range">
-                <Option value="30">$30</Option>
-                <Option value="40">$40</Option>
-                <Option value="50">$50</Option>
-                <Option value="60">$60</Option>
-                <Option value="70">$70</Option>
-                <Option value="80">$80</Option>
+              <Select
+                placeholder="Select price range"
+                onDropdownVisibleChange={setOpenPrice}
+                suffixIcon={renderDropdownIcon(openPrice)}
+                allowClear
+              >
+                {priceOptions.map(price => (
+                  <Option key={price} value={price}>
+                    {price}
+                  </Option>
+                ))}
               </Select>
             </Form.Item>
           </Col>
@@ -55,12 +128,12 @@ const SearchBar = () => {
               <Row gutter={8}>
                 <Col span={12}>
                   <Form.Item name="mileageFrom">
-                    <Input placeholder="From" type="number" />
+                    <Input placeholder="From" type="number" min={0} />
                   </Form.Item>
                 </Col>
                 <Col span={12}>
                   <Form.Item name="mileageTo">
-                    <Input placeholder="To" type="number" />
+                    <Input placeholder="To" type="number" min={0} />
                   </Form.Item>
                 </Col>
               </Row>
@@ -69,12 +142,7 @@ const SearchBar = () => {
 
           <Col xs={24} sm={12} md={6}>
             <Form.Item label=" " colon={false}>
-              <Button
-                type="primary"
-                htmlType="submit"
-                icon={<SearchOutlined />}
-                block
-              >
+              <Button type="primary" htmlType="submit" block>
                 Search
               </Button>
             </Form.Item>

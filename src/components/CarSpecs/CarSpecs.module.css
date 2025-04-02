@@ -1,0 +1,22 @@
+.container {
+  margin-bottom: 24px;
+}
+
+.title {
+  color: #1890ff;
+  margin-bottom: 16px;
+  margin-top: 82px !important;
+}
+
+.specsList {
+  margin-top: 16px;
+}
+
+.specsList .ant-descriptions-item-label {
+  font-weight: 500;
+  width: 40%;
+}
+
+.specsList .ant-descriptions-item-content {
+  width: 60%;
+}

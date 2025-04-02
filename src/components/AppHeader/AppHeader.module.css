@@ -17,10 +17,12 @@
 
 .rental {
   font-weight: bold;
+  font-size: 20px;
 }
 
 .car {
   color: blue;
+  font-size: 20px;
 }
 
 .navLinks {

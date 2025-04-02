@@ -1,0 +1,14 @@
+.container {
+  margin-top: 16px;
+}
+
+.listItem {
+  padding-left: 0 !important;
+  border-bottom: none !important;
+  padding: 4px 0;
+}
+
+.bullet {
+  color: #1890ff;
+  margin-right: 8px;
+}

@@ -1,12 +1,50 @@
-# React + Vite
+# Car Rental Service 🚗💨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📖 Project Description
 
-Currently, two official plugins are available:
+A modern car rental web application that allows users to browse, search, and book vehicles. The platform provides detailed car information, filtering options, and a seamless booking experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Key Features
 
-## Expanding the ESLint configuration
+- 🚀 Search cars by brand, price range, mileage
+- 🔍 Detailed car information pages
+- ❤️ Favorite cars functionality
+- 📅 Booking form with date selection
+- 📱 Responsive design for all devices
+- 🔐 Form validation and error handling
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Technologies Used
+
+### Frontend:
+
+- React.js
+- Redux (State management)
+- Ant Design (UI components)
+- React Router (Navigation)
+- CSS Modules (Styling)
+
+### Backend:
+
+- Node.js (Mock API)
+- Axios (HTTP requests)
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/car-rental-app.git
+```
+
+2. Install dependencies:
+   cd car-rental-app
+   npm install
+3. Start the development server:
+   npm run dev

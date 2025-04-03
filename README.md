@@ -40,11 +40,12 @@ A modern car rental web application that allows users to browse, search, and boo
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/car-rental-app.git
+git clone https://github.com/DmytroBzs/RentalCar
 ```
 
 2. Install dependencies:
-   cd car-rental-app
+
    npm install
+
 3. Start the development server:
    npm run dev
